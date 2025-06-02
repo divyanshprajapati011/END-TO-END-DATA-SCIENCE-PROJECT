@@ -12,7 +12,7 @@ st.set_page_config(page_title="Heart Disease Predictor", layout="centered")
 # Load data, train model, and encode
 @st.cache_data
 def train_and_save_model():
-    df = pd.read_csv("D:\TechNest\heart.csv")  # Place heart.csv in same folder
+    df = pd.read_csv("heart.csv")  # Place heart.csv in same folder
 
     cat_cols = ['Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope']
     le_dict = {}
@@ -29,8 +29,8 @@ def train_and_save_model():
     model.fit(X, y)
 
     # Save model and encoders
-    joblib.dump(model, "D:\TechNest\heart_model.pkl")
-    joblib.dump(le_dict, "D:\TechNest\encoders.pkl")
+    joblib.dump(model, "heart_model.pkl")
+    joblib.dump(le_dict, "encoders.pkl")
 
     return model, le_dict, list(X.columns)
 
